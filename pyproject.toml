@@ -1,0 +1,17 @@
+[project]
+name = "researcher-agent"
+version = "0.1.0"
+description = "Simple research agent that provides insights based on existing knowledge"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "google-adk==1.3.0",
+    "locust==2.37.10",
+    "python-dotenv==1.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest==8.4.0",
+    "ruff==0.11.13",
+]
