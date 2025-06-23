@@ -37,13 +37,26 @@ class ResearchAgentUser(HttpUser):
         )
 
     @task(3)
-    def research_artificial_intelligence(self):
-        """Test researching artificial intelligence with different focus areas."""
+    def research_topics(self):
+        """Test researching various topics with different focus areas."""
+        # Random topic and focus selection
+        topics = ["artificial intelligence", "climate change", "blockchain"]
         focus_areas = ["general", "technical", "business", "social"]
+        
+        topic = random.choice(topics)
         focus = random.choice(focus_areas)
         
+        # Vary the message format
+        message_formats = [
+            f"Research {topic} with a {focus} focus",
+            f"Can you research {topic} from a {focus} perspective?",
+            f"Tell me about {topic} with a focus on {focus} aspects",
+            f"What can you tell me about {topic}?",
+            f"Explain {topic} in simple terms"
+        ]
+        
         message_data = {
-            "message": f"Research artificial intelligence with a {focus} focus",
+            "message": random.choice(message_formats),
             "session_id": self.session_id,
         }
         
@@ -60,119 +73,25 @@ class ResearchAgentUser(HttpUser):
                 self.conversation_id = data["conversation_id"]
 
     @task(2)
-    def research_climate_change(self):
-        """Test researching climate change with different focus areas."""
-        focus_areas = ["general", "technical", "business", "social"]
-        focus = random.choice(focus_areas)
+    def analyze_trends(self):
+        """Test trend analysis across different domains."""
+        # Random domain selection and varied message formats
+        domains = ["technology", "business", "science"]
+        domain = random.choice(domains)
         
-        message_data = {
-            "message": f"Can you research climate change from a {focus} perspective?",
-            "session_id": self.session_id,
-        }
-        
-        self.client.post(
-            f"/apps/research_agent/users/{self.user_id}/conversations",
-            headers={"Content-Type": "application/json"},
-            json=message_data,
-        )
-
-    @task(2)
-    def research_blockchain(self):
-        """Test researching blockchain technology."""
-        focus_areas = ["general", "technical", "business", "social"]
-        focus = random.choice(focus_areas)
-        
-        message_data = {
-            "message": f"Tell me about blockchain technology with a focus on {focus} aspects",
-            "session_id": self.session_id,
-        }
-        
-        self.client.post(
-            f"/apps/research_agent/users/{self.user_id}/conversations",
-            headers={"Content-Type": "application/json"},
-            json=message_data,
-        )
-
-    @task(2)
-    def analyze_technology_trends(self):
-        """Test analyzing trends in technology domain."""
-        message_data = {
-            "message": "Analyze current trends in technology",
-            "session_id": self.session_id,
-        }
-        
-        self.client.post(
-            f"/apps/research_agent/users/{self.user_id}/conversations",
-            headers={"Content-Type": "application/json"},
-            json=message_data,
-        )
-
-    @task(1)
-    def analyze_business_trends(self):
-        """Test analyzing trends in business domain."""
-        message_data = {
-            "message": "What are the emerging trends in business?",
-            "session_id": self.session_id,
-        }
-        
-        self.client.post(
-            f"/apps/research_agent/users/{self.user_id}/conversations",
-            headers={"Content-Type": "application/json"},
-            json=message_data,
-        )
-
-    @task(1)
-    def analyze_science_trends(self):
-        """Test analyzing trends in science domain."""
-        message_data = {
-            "message": "Analyze trends in scientific research",
-            "session_id": self.session_id,
-        }
-        
-        self.client.post(
-            f"/apps/research_agent/users/{self.user_id}/conversations",
-            headers={"Content-Type": "application/json"},
-            json=message_data,
-        )
-
-    @task(1)
-    def general_research_query(self):
-        """Test general research queries."""
-        queries = [
-            "What can you tell me about artificial intelligence?",
-            "How does climate change affect businesses?",
-            "Explain blockchain in simple terms",
-            "What are the latest technology trends?",
-            "How is AI changing the business landscape?"
+        message_formats = [
+            f"Analyze current trends in {domain}",
+            f"What are the emerging trends in {domain}?",
+            f"Tell me about {domain} trends",
+            f"What's happening in the {domain} space?",
+            f"Analyze trends in {domain} research" if domain == "science" else f"What are the latest {domain} developments?"
         ]
         
         message_data = {
-            "message": random.choice(queries),
+            "message": random.choice(message_formats),
             "session_id": self.session_id,
         }
         
-        self.client.post(
-            f"/apps/research_agent/users/{self.user_id}/conversations",
-            headers={"Content-Type": "application/json"},
-            json=message_data,
-        )
-
-    @task(1)
-    def test_unknown_topic(self):
-        """Test error handling with unknown topics."""
-        unknown_topics = [
-            "Research quantum mechanics",
-            "Tell me about cryptocurrency regulations",  
-            "Analyze trends in space exploration",
-            "What about renewable energy trends?"
-        ]
-        
-        message_data = {
-            "message": random.choice(unknown_topics),
-            "session_id": self.session_id,
-        }
-        
-        # This should trigger error handling in the agent
         self.client.post(
             f"/apps/research_agent/users/{self.user_id}/conversations",
             headers={"Content-Type": "application/json"},

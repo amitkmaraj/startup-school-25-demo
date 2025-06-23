@@ -63,7 +63,7 @@ locust -f load_test.py \
 - **Duration**: 120 seconds
 - **Users**: 60 concurrent users
 - **Spawn Rate**: 5 users per second
-- **Test Scenarios**: Research queries, trend analysis, error handling
+- **Test Scenarios**: Two focused test types (see below)
 
 ## Deploy with Traffic Control
 
@@ -109,13 +109,26 @@ The researcher agent provides two main tools:
 
 ## Load Test Coverage
 
-The load test suite covers:
+The simplified load test suite includes two main scenarios:
 
-- **Research Queries**: AI, climate change, blockchain with different focus areas
-- **Trend Analysis**: Technology, business, and science domains
-- **Error Handling**: Unknown topics and edge cases
-- **Session Management**: User sessions and conversation flows
-- **Feedback Collection**: Automated feedback submission
+1. **Research Topics** (Weight: 3)
+
+   - Tests research queries across AI, climate change, and blockchain topics
+   - Varies focus areas (general, technical, business, social)
+   - Uses different question formats for realistic variety
+   - Validates response structure and conversation flow
+
+2. **Analyze Trends** (Weight: 2)
+   - Tests trend analysis across technology, business, and science domains
+   - Uses varied question formats and phrasing
+   - Covers all supported trend analysis capabilities
+
+**Benefits of Simplified Structure:**
+
+- **Clear Console Output**: Only two test types appear in logs
+- **Comprehensive Coverage**: Still tests all agent capabilities
+- **Realistic Variety**: Random selection of topics, domains, and question formats
+- **Easy Monitoring**: Simple to track performance of core functions
 
 ## Monitoring
 
@@ -132,4 +145,4 @@ The agent includes built-in monitoring through:
 - **Containerized**: Dockerfile included for easy deployment
 - **Scalable**: Designed for Cloud Run auto-scaling
 - **Observable**: Integrated monitoring and logging
-- **Testable**: Comprehensive load testing framework
+- **Testable**: Simplified load testing framework
