@@ -31,7 +31,7 @@ class ResearchAgentUser(HttpUser):
         session_data = {"state": {"preferred_language": "English", "visit_count": 1}}
         
         self.client.put(
-            f"/apps/weather_agent/users/{self.user_id}/sessions/{self.session_id}",
+            f"/apps/research_agent/users/{self.user_id}/sessions/{self.session_id}",
             headers={"Content-Type": "application/json"},
             json=session_data,
         )
@@ -48,7 +48,7 @@ class ResearchAgentUser(HttpUser):
         }
         
         response = self.client.post(
-            f"/apps/weather_agent/users/{self.user_id}/conversations",
+            f"/apps/research_agent/users/{self.user_id}/conversations",
             headers={"Content-Type": "application/json"},
             json=message_data,
         )
@@ -71,7 +71,7 @@ class ResearchAgentUser(HttpUser):
         }
         
         self.client.post(
-            f"/apps/weather_agent/users/{self.user_id}/conversations",
+            f"/apps/research_agent/users/{self.user_id}/conversations",
             headers={"Content-Type": "application/json"},
             json=message_data,
         )
@@ -88,7 +88,7 @@ class ResearchAgentUser(HttpUser):
         }
         
         self.client.post(
-            f"/apps/weather_agent/users/{self.user_id}/conversations",
+            f"/apps/research_agent/users/{self.user_id}/conversations",
             headers={"Content-Type": "application/json"},
             json=message_data,
         )
@@ -102,7 +102,7 @@ class ResearchAgentUser(HttpUser):
         }
         
         self.client.post(
-            f"/apps/weather_agent/users/{self.user_id}/conversations",
+            f"/apps/research_agent/users/{self.user_id}/conversations",
             headers={"Content-Type": "application/json"},
             json=message_data,
         )
@@ -116,7 +116,7 @@ class ResearchAgentUser(HttpUser):
         }
         
         self.client.post(
-            f"/apps/weather_agent/users/{self.user_id}/conversations",
+            f"/apps/research_agent/users/{self.user_id}/conversations",
             headers={"Content-Type": "application/json"},
             json=message_data,
         )
@@ -130,7 +130,7 @@ class ResearchAgentUser(HttpUser):
         }
         
         self.client.post(
-            f"/apps/weather_agent/users/{self.user_id}/conversations",
+            f"/apps/research_agent/users/{self.user_id}/conversations",
             headers={"Content-Type": "application/json"},
             json=message_data,
         )
@@ -152,7 +152,7 @@ class ResearchAgentUser(HttpUser):
         }
         
         self.client.post(
-            f"/apps/weather_agent/users/{self.user_id}/conversations",
+            f"/apps/research_agent/users/{self.user_id}/conversations",
             headers={"Content-Type": "application/json"},
             json=message_data,
         )
@@ -174,7 +174,7 @@ class ResearchAgentUser(HttpUser):
         
         # This should trigger error handling in the agent
         self.client.post(
-            f"/apps/weather_agent/users/{self.user_id}/conversations",
+            f"/apps/research_agent/users/{self.user_id}/conversations",
             headers={"Content-Type": "application/json"},
             json=message_data,
         )

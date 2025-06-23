@@ -12,6 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from weather_agent.agent import root_agent
+from research_agent.agent import root_agent
 
 __all__ = ["root_agent"]
