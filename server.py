@@ -36,11 +36,11 @@ AGENT_DIR = os.path.dirname(os.path.abspath(__file__))
 # Simplified app arguments - using in-memory session service
 app_args = {"agents_dir": AGENT_DIR, "web": True}
 
-    logger.log_text(
+logger.log_text(
     "Using in-memory session service. Sessions will be lost when the server restarts. "
     "This is suitable for stateless research operations.",
     severity="INFO",
-    )
+)
 
 provider = TracerProvider()
 processor = export.BatchSpanProcessor(CloudTraceLoggingSpanExporter())
